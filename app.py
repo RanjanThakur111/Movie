@@ -4,10 +4,9 @@ import requests
 import pickle
 
 # Load the processed data and similarity matrix
-with open('movie_data.pkl', 'wb') as file:
-    pickle.dump([cosine_sim], file, protocol=pickle.HIGHEST_PROTOCOL)
+with open('movie_data.pkl', 'rb') as file:
+    movies, cosine_sim = pickle.load(file)
 
-# Function to get movie recommendations
 def get_recommendations(title, cosine_sim=cosine_sim):
     idx = movies[movies['title'] == title].index[0]
     sim_scores = list(enumerate(cosine_sim[idx]))
