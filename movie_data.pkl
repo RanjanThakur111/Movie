@@ -1,0 +1,3 @@
+import pickle
+with open('movie_data.pkl', 'wb') as file:
+    pickle.dump((movies, cosine_sim), file)
